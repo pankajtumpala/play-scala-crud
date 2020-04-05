@@ -32,5 +32,12 @@ $ sbt test
 ```
 
 ## API documentation
+Swagger
 
 http://localhost:9000/docs/swagger-ui/index.html?url=/assets/swagger.jso
+
+Postman
+
+https://documenter.getpostman.com/view/8337911/SzYbycrp?version=latest
+
+
