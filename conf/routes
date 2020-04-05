@@ -1,0 +1,66 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# https://www.playframework.com/documentation/latest/ScalaRouting
+# ~~~~
+
+# Home
+
+GET /                                       controllers.HomeController.index
+
+# Employee api
+
+###
+#  summary: Get Employees 
+#  tags:
+#    - Get Employees
+#  responses:
+#    200:
+#      description: success
+###
+GET     /api/v1/employee                           controllers.ApplicationController.get
+
+###
+#  summary: Create Employee
+#  tags:
+#    - Create Employees
+#  responses:
+#    200:
+#      description: success
+#  parameters:
+#    - name: body
+#      schema:
+#        $ref: '#/definitions/models.EmployeeFormData'
+###
+POST    /api/v1/employee                           controllers.ApplicationController.create
+
+###
+#  summary: Delete Employees 
+#  tags:
+#    - Delete Employees
+#  responses:
+#    200:
+#      description: success
+###
+DELETE  /api/v1/employee/:id                       controllers.ApplicationController.delete(id : Long)
+
+###
+#  summary: Update Employees 
+#  tags:
+#    - Update Employees
+#  responses:
+#    200:
+#      description: success
+#  parameters:
+#    - name: body
+#      schema:
+#        $ref: '#/definitions/models.EmployeeFormData'
+###
+###
+PATCH   /api/v1/employee/:id                       controllers.ApplicationController.update(id : Long)
+
+### NoDocs ###
+GET   /docs/swagger-ui/*file        controllers.Assets.at(path:String="/public/lib/swagger-ui", file:String)
+
+### NoDocs ###
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)

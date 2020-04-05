@@ -1,0 +1,8 @@
+swagger: "2.0"
+info:
+  title: "Employees CRUD API"
+  description: "Employees API"
+consumes:
+  - application/json
+produces:
+  - application/json
