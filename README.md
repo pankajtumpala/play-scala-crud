@@ -4,23 +4,30 @@ CRUD api using Play Scala Slick
 ## Setup
 Clone repo 
 
-https://github.com/pankajtumpala/play-scala-crud.git
+$ git clone https://github.com/pankajtumpala/play-scala-crud.git
 
 Install sbt
 
 ```https://www.scala-sbt.org/download.html```
 
 ## Create schema
+Create schema in mysql
 
 ```CREATE SCHEMA `scalacrud` ;```
 
 ## Running app
 
-```sbt run```
+```
+$ cd play-scala-crud
+$ sbt run
+```
 
 ## Testing
 
-```sbt test```
+```
+$ cd play-scala-crud
+$ sbt test
+```
 
 ## API documentation
 
