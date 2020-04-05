@@ -27,6 +27,9 @@ Create schema in mysql
 
 ```CREATE SCHEMA `scalacrud` ;```
 
+## Migration
+Runs automatically on first api access for both test and run
+
 ## Running app
 
 ```
