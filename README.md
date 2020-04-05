@@ -2,7 +2,9 @@
 CRUD api using Play Scala Slick
 
 ## Setup
+Clone repo 
 
+https://github.com/pankajtumpala/play-scala-crud.git
 
 Install sbt
 
