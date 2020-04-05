@@ -1,7 +1,8 @@
 package controllers
 
 import javax.inject._
-import models.{Employee, EmployeeForm}
+import models.{Employee}
+import forms.EmployeeForm
 import play.api.Logging
 import play.api.mvc._
 import play.api.libs.json.Json

@@ -20,20 +20,6 @@ object Employee {
 
 case class EmployeeFormData(firstName: String, lastName: String, mobile: Long, email: String)
 
-object EmployeeForm {
-
-  val form = Form(
-    mapping(
-      "firstName" -> nonEmptyText,
-      "lastName" -> nonEmptyText,
-      "mobile" -> longNumber,
-      "email" -> email
-    )(EmployeeFormData.apply)(EmployeeFormData.unapply)
-  )
-}
-
-
-
 class Employees @Inject() (protected val dbConfigProvider: DatabaseConfigProvider)(implicit executionContext: ExecutionContext) {
   // We want the JdbcProfile for this provider
   val dbConfig = dbConfigProvider.get[JdbcProfile]
