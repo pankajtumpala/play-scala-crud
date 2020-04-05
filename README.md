@@ -12,6 +12,16 @@ Install sbt
 
 ```https://www.scala-sbt.org/download.html```
 
+Update database schema url
+
+```
+slick.dbs.default.profile = "slick.jdbc.MySQLProfile$"
+slick.dbs.default.db.driver = "com.mysql.cj.jdbc.Driver"
+slick.dbs.default.db.url = "jdbc:mysql://localhost/scalacrud?serverTimezone=UTC"
+slick.dbs.default.db.user = "root"
+slick.dbs.default.db.password = ""
+```
+
 ## Create schema
 Create schema in mysql
 
