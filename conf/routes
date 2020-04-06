@@ -17,7 +17,17 @@ GET /                                       controllers.HomeController.index
 #    200:
 #      description: success
 ###
-GET     /api/v1/employee                           controllers.ApplicationController.get
+GET     /api/v1/employees                           controllers.ApplicationController.get
+
+###
+#  summary: Get Employee Details
+#  tags:
+#    - Get Employee Details
+#  responses:
+#    200:
+#      description: success
+###
+GET     /api/v1/employees/:id                           controllers.ApplicationController.getEmployee(id : Long)
 
 ###
 #  summary: Create Employee
@@ -31,7 +41,7 @@ GET     /api/v1/employee                           controllers.ApplicationContro
 #      schema:
 #        $ref: '#/definitions/models.EmployeeFormData'
 ###
-POST    /api/v1/employee                           controllers.ApplicationController.create
+POST    /api/v1/employees                           controllers.ApplicationController.create
 
 ###
 #  summary: Delete Employees 
@@ -41,7 +51,7 @@ POST    /api/v1/employee                           controllers.ApplicationContro
 #    200:
 #      description: success
 ###
-DELETE  /api/v1/employee/:id                       controllers.ApplicationController.delete(id : Long)
+DELETE  /api/v1/employees/:id                       controllers.ApplicationController.delete(id : Long)
 
 ###
 #  summary: Update Employees 
@@ -56,7 +66,7 @@ DELETE  /api/v1/employee/:id                       controllers.ApplicationContro
 #        $ref: '#/definitions/models.EmployeeFormData'
 ###
 ###
-PATCH   /api/v1/employee/:id                       controllers.ApplicationController.update(id : Long)
+PATCH   /api/v1/employees/:id                       controllers.ApplicationController.update(id : Long)
 
 ### NoDocs ###
 GET   /docs/swagger-ui/*file        controllers.Assets.at(path:String="/public/lib/swagger-ui", file:String)

@@ -13,7 +13,7 @@ class ApplicationControllerSpec extends PlaySpec with GuiceOneAppPerTest with In
   "ApplicationController" should {
 
     "render the list of employees" in {
-      val request = FakeRequest(GET, "/api/v1/employee").withHeaders(HOST -> "localhost:9000").withCSRFToken
+      val request = FakeRequest(GET, "/api/v1/employees").withHeaders(HOST -> "localhost:9000").withCSRFToken
       val home:Future[Result] = route(app, request).get
         
       val result = contentAsJson(home)
@@ -22,7 +22,7 @@ class ApplicationControllerSpec extends PlaySpec with GuiceOneAppPerTest with In
     }
     
     "create employee success" in {
-      val request = FakeRequest(POST, "/api/v1/employee").withHeaders(HOST -> "localhost:9000").withJsonBody(Json.parse(
+      val request = FakeRequest(POST, "/api/v1/employees").withHeaders(HOST -> "localhost:9000").withJsonBody(Json.parse(
         s"""{
             |  "firstName": "John",
             |  "lastName": "Smith",
@@ -35,7 +35,7 @@ class ApplicationControllerSpec extends PlaySpec with GuiceOneAppPerTest with In
     }
     
     "create employee failure" in {
-      val request = FakeRequest(POST, "/api/v1/employee").withHeaders(HOST -> "localhost:9000").withJsonBody(Json.parse(
+      val request = FakeRequest(POST, "/api/v1/employees").withHeaders(HOST -> "localhost:9000").withJsonBody(Json.parse(
         s"""{
             |  "firstName": "John",
             |  "lastName": "Smith",
@@ -48,7 +48,7 @@ class ApplicationControllerSpec extends PlaySpec with GuiceOneAppPerTest with In
     }
     
     "update employee success" in {
-      val request = FakeRequest(PATCH, "/api/v1/employee/1").withHeaders(HOST -> "localhost:9000").withJsonBody(Json.parse(
+      val request = FakeRequest(PATCH, "/api/v1/employees/1").withHeaders(HOST -> "localhost:9000").withJsonBody(Json.parse(
         s"""{
             |  "firstName": "John",
             |  "lastName": "Smith",
@@ -61,7 +61,7 @@ class ApplicationControllerSpec extends PlaySpec with GuiceOneAppPerTest with In
     }
     
     "update employee failure" in {
-      val request = FakeRequest(PATCH, "/api/v1/employee/1").withHeaders(HOST -> "localhost:9000").withJsonBody(Json.parse(
+      val request = FakeRequest(PATCH, "/api/v1/employees/1").withHeaders(HOST -> "localhost:9000").withJsonBody(Json.parse(
         s"""{
             |  "firstName": "John",
             |  "lastName": "Smith",
@@ -74,14 +74,14 @@ class ApplicationControllerSpec extends PlaySpec with GuiceOneAppPerTest with In
     }
     
     "delete employee success" in {
-      val request = FakeRequest(DELETE, "/api/v1/employee/1").withHeaders(HOST -> "localhost:9000")
+      val request = FakeRequest(DELETE, "/api/v1/employees/1").withHeaders(HOST -> "localhost:9000")
       val home:Future[Result] = route(app, request).get
       val result = contentAsJson(home)
       (result \ "message").as[String] mustBe "Employee deleted successfully"
     }
     
     "delete employee failure" in {
-      val request = FakeRequest(DELETE, "/api/v1/employee/1").withHeaders(HOST -> "localhost:9000")
+      val request = FakeRequest(DELETE, "/api/v1/employees/1").withHeaders(HOST -> "localhost:9000")
       val home:Future[Result] = route(app, request).get
       val result = contentAsJson(home)
       (result \ "error").as[String] mustBe "Employee not found"

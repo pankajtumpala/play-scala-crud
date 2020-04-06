@@ -65,4 +65,8 @@ class Employees @Inject() (protected val dbConfigProvider: DatabaseConfigProvide
    dbConfig.db.run(employees.result)
   }
 
+  def findByEmail(email: String): Future[Option[Employee]] = {
+    db.run(employees.filter(_.email === email).take(1).result.headOption)
+  }
+
 }

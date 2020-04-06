@@ -26,4 +26,8 @@ class EmployeeService @Inject() (employees: Employees) {
   def listAllEmployees: Future[Seq[Employee]] = {
     employees.listAll
   }
+
+  def findByEmail(email: String): Future[Option[Employee]] = {
+    employees.findByEmail(email)
+  }
 }
