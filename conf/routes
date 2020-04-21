@@ -68,6 +68,10 @@ DELETE  /api/v1/employees/:id                       controllers.ApplicationContr
 ###
 PATCH   /api/v1/employees/:id                       controllers.ApplicationController.update(id : Long)
 
+
+POST        /api/auth/signin/credentials                                    controllers.CredentialsAuthController.authenticate
+POST        /api/auth/signup                                                controllers.SignUpController.signUp
+
 ### NoDocs ###
 GET   /docs/swagger-ui/*file        controllers.Assets.at(path:String="/public/lib/swagger-ui", file:String)
 

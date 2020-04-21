@@ -10,13 +10,22 @@ import services.EmployeeService
 
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.Future
-
+import com.mohiva.play.silhouette.api.Silhouette
+import utils.auth.DefaultEnv
 import play.api.i18n.{Langs, MessagesApi}
 
 @Singleton
-class ApplicationController @Inject()(cc: ControllerComponents, employeeService: EmployeeService,messagesApi: MessagesApi,langs: Langs) extends AbstractController(cc) with Logging with play.api.i18n.I18nSupport {
+class ApplicationController @Inject()(cc: ControllerComponents, 
+                                      employeeService: EmployeeService,
+                                      messagesApi: MessagesApi,
+                                      langs: Langs,
+                                      silhouette: Silhouette[DefaultEnv]) extends AbstractController(cc) with Logging with play.api.i18n.I18nSupport {
   
-  def create() = Action.async { implicit request: Request[AnyContent] =>
+  def index = Action {
+    Ok(views.html.index())
+  }
+
+  def create() = silhouette.SecuredAction.async { implicit request: Request[AnyContent] =>
     logger.trace("Create Employee")
     EmployeeForm.form.bindFromRequest.fold(
       errorForm => {
@@ -34,14 +43,14 @@ class ApplicationController @Inject()(cc: ControllerComponents, employeeService:
       })
   }
   
-  def get() = Action.async { implicit request: Request[AnyContent] =>
+  def get() = silhouette.SecuredAction.async { implicit request: Request[AnyContent] =>
     logger.trace("Get Employees")
     employeeService.listAllEmployees map { employees =>
       Ok(Json.obj("employees" -> Json.toJson(employees)))
     }
   }
   
-  def getEmployee(id: Long) = Action.async { implicit request: Request[AnyContent] =>
+  def getEmployee(id: Long) = silhouette.SecuredAction.async { implicit request: Request[AnyContent] =>
     logger.trace("Get Employee Details")
     employeeService.getEmployee(id) map { employee =>
       println(employee)
@@ -49,7 +58,7 @@ class ApplicationController @Inject()(cc: ControllerComponents, employeeService:
     }
   }
   
-  def update(id: Long)  = Action.async { implicit request: Request[AnyContent] =>
+  def update(id: Long)  = silhouette.SecuredAction.async { implicit request: Request[AnyContent] =>
     logger.trace("Update Employee")
     EmployeeForm.form.bindFromRequest.fold(
       // if any error in submitted data
@@ -65,7 +74,7 @@ class ApplicationController @Inject()(cc: ControllerComponents, employeeService:
       })    
   }
   
-  def delete(id: Long) = Action.async { implicit request: Request[AnyContent] =>
+  def delete(id: Long) = silhouette.SecuredAction.async { implicit request: Request[AnyContent] =>
     logger.trace("Delete Employee")
     employeeService.deleteEmployee(id) map { res =>
       if(res == 1) Ok(Json.obj("message" -> "Employee deleted successfully")) else BadRequest(Json.obj("error" -> "Employee not found"))
