@@ -56,7 +56,7 @@ trait DBTableDefinitions {
   val users = TableQuery[Users]
   val loginInfos = TableQuery[LoginInfos]
   val userLoginInfos = TableQuery[UserLoginInfos]
-  val passwordInfos = TableQuery[PasswordInfos]
+  val slickPasswordInfos = TableQuery[PasswordInfos]
 
   def loginInfoQuery(loginInfo: LoginInfo) =
     loginInfos.filter(dbLoginInfo => dbLoginInfo.providerId === loginInfo.providerID && dbLoginInfo.providerKey === loginInfo.providerKey)
