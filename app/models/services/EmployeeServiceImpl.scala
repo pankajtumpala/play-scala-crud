@@ -1,4 +1,4 @@
-package models
+package models.services
 
 import com.google.inject.Inject
 import play.api.data.Form

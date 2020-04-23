@@ -1,7 +1,7 @@
 package controllers
 
 import javax.inject._
-import models.{Employee}
+import models.services.{Employee}
 import forms.EmployeeForm
 import play.api.Logging
 import play.api.mvc._
@@ -23,6 +23,10 @@ class ApplicationController @Inject()(cc: ControllerComponents,
   
   def index = Action {
     Ok(views.html.index())
+  }
+  
+  def home = Action {
+    Ok(views.html.home())
   }
 
   def create() = silhouette.SecuredAction.async { implicit request: Request[AnyContent] =>

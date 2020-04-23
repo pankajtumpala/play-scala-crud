@@ -1,7 +1,7 @@
 package services
 
 import com.google.inject.Inject
-import models.{Employee, Employees}
+import models.services.{Employee, Employees}
 
 import scala.concurrent.Future
 

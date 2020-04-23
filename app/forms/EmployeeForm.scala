@@ -3,7 +3,7 @@ package forms
 import play.api.data.Form
 import play.api.data.Forms.mapping
 import play.api.data.Forms._
-import models.EmployeeFormData
+import models.services.EmployeeFormData
 
 object EmployeeForm {
 
