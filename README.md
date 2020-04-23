@@ -37,12 +37,7 @@ $ cd play-scala-crud
 $ sbt run
 ```
 
-## Testing
 
-```
-$ cd play-scala-crud
-$ sbt test
-```
 
 ## API documentation
 Swagger
