@@ -72,7 +72,14 @@ DELETE  /api/v1/employees/:id                       controllers.ApplicationContr
 ###
 PATCH   /api/v1/employees/:id                       controllers.ApplicationController.update(id : Long)
 
-
+###
+#  summary: Login 
+#  tags:
+#    - Login
+#  responses:
+#    200:
+#      description: success
+###
 POST        /api/auth/signin/credentials                                    controllers.CredentialsAuthController.authenticate
 POST        /api/auth/signup                                                controllers.SignUpController.signUp
 
