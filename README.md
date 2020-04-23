@@ -37,17 +37,12 @@ $ cd play-scala-crud
 $ sbt run
 ```
 
-## Testing
 
-```
-$ cd play-scala-crud
-$ sbt test
-```
 
 ## API documentation
 Swagger
 
-http://localhost:9000/docs/swagger-ui/index.html?url=/assets/swagger.jso
+http://localhost:9000/docs/swagger-ui/index.html?url=/assets/swagger.json
 
 Postman
 
